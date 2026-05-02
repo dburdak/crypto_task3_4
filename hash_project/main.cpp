@@ -6,5 +6,6 @@
 
 int main() {
     //task2();
+    fingerprint();
     return 0;
 }

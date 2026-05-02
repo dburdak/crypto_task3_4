@@ -13,5 +13,7 @@ void add_padding(std::vector<uint8_t> &message);
 void hash_counting(std::vector<uint8_t> message, uint32_t out_hash[8]);
 void task2();
 
+void fingerprint();
+
 
 

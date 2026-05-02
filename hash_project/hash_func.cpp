@@ -2,6 +2,7 @@
 #include <vector>
 #include <iostream>
 #include <iomanip>
+#include <fstream>
 
 uint32_t rotr(uint32_t x,  uint32_t n) {
     return x >> n | x << (32 - n);
@@ -165,6 +166,29 @@ void task2() {
         }
     }
 }
+
+
+void fingerprint() {
+    if (std::ifstream file("kse.ua.der", std::ios::binary | std::ios::ate); file.is_open()) {
+        std::streamsize size = file.tellg();
+        file.seekg(0, std::ios::beg);
+
+        std::vector<uint8_t> cert(size);
+        file.read(reinterpret_cast<char *>(cert.data()), size);
+
+        uint32_t result_hash[8];
+        hash_counting(cert, result_hash);
+
+        for (int i = 0; i < 8; i++) {
+            uint32_t word = result_hash[i];
+            for (int j = 3; j >= 0; j--) {
+                std::cout << std::hex << std::setw(2) << std::setfill('0') << std::uppercase << ((word >> (j * 8)) & 0xFF);
+                if (i != 7 || j != 0) std::cout << ":";
+            }
+        }
+    }
+}
+
 
 
 
