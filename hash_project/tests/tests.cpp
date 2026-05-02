@@ -2,7 +2,7 @@
 #include "../hash_func.h"
 #include <vector>
 
-TEST(SHA256Test, TestVectorABC) {
+TEST(SHA256Test, VectorABC) {
     std::vector<uint8_t> msg = {'a', 'b', 'c'};
 
     uint32_t expected[8] = {
@@ -18,7 +18,7 @@ TEST(SHA256Test, TestVectorABC) {
     }
 }
 
-TEST(SHA256Test, TestVectorEmptyString) {
+TEST(SHA256Test, Empty) {
     std::vector<uint8_t> msg = {};
 
     uint32_t expected[8] = {
@@ -34,7 +34,7 @@ TEST(SHA256Test, TestVectorEmptyString) {
     }
 }
 
-TEST(SHA256Test, TestVector448Bits) {
+TEST(SHA256Test, TestVector3) {
     std::string s = "abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq";
     std::vector<uint8_t> msg(s.begin(), s.end());
 
@@ -51,7 +51,7 @@ TEST(SHA256Test, TestVector448Bits) {
     }
 }
 
-TEST(SHA256Test, TestVector896Bits) {
+TEST(SHA256Test, TestVector4) {
     std::string s = "abcdefghbcdefghicdefghijdefghijkefghijklfghijklmghijklmnhijklmnoijklmnopjklmnopqklmnopqrlmnopqrsmnopqrstnopqrstu";
     std::vector<uint8_t> msg(s.begin(), s.end());
 
@@ -68,7 +68,7 @@ TEST(SHA256Test, TestVector896Bits) {
     }
 }
 
-TEST(SHA256Test, TestVectorOneMillionA) {
+TEST(SHA256Test, TestVector5) {
     std::vector<uint8_t> msg(1000000, 'a');
 
     uint32_t expected[8] = {

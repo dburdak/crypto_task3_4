@@ -145,7 +145,7 @@ void task2() {
             for (uint8_t b : prefix) {
                 std::cout << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(b);
             }
-            std::cout << "SHA-256: ";
+            std::cout << "hash: ";
             for (unsigned int i : hash) {
                 std::cout << std::hex << std::setw(8) << std::setfill('0') << i;
             }
